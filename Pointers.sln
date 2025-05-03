@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pointers", "Pointers\Pointers.vcxproj", "{1F7868C3-76C3-4416-B53F-9A6BA292EF89}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TransferParameters", "TransferParameters\TransferParameters.vcxproj", "{EFE1FC52-60CA-4DF1-98CD-44763C7D7301}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicMemory", "DynamicMemory\DynamicMemory.vcxproj", "{82E96CCB-9520-40BD-9083-55B0446186C4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Split", "Split\Split.vcxproj", "{E813A301-E895-43BC-904F-E4C3F1D628C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,22 @@ Global
 		{EFE1FC52-60CA-4DF1-98CD-44763C7D7301}.Release|x64.Build.0 = Release|x64
 		{EFE1FC52-60CA-4DF1-98CD-44763C7D7301}.Release|x86.ActiveCfg = Release|Win32
 		{EFE1FC52-60CA-4DF1-98CD-44763C7D7301}.Release|x86.Build.0 = Release|Win32
+		{82E96CCB-9520-40BD-9083-55B0446186C4}.Debug|x64.ActiveCfg = Debug|x64
+		{82E96CCB-9520-40BD-9083-55B0446186C4}.Debug|x64.Build.0 = Debug|x64
+		{82E96CCB-9520-40BD-9083-55B0446186C4}.Debug|x86.ActiveCfg = Debug|Win32
+		{82E96CCB-9520-40BD-9083-55B0446186C4}.Debug|x86.Build.0 = Debug|Win32
+		{82E96CCB-9520-40BD-9083-55B0446186C4}.Release|x64.ActiveCfg = Release|x64
+		{82E96CCB-9520-40BD-9083-55B0446186C4}.Release|x64.Build.0 = Release|x64
+		{82E96CCB-9520-40BD-9083-55B0446186C4}.Release|x86.ActiveCfg = Release|Win32
+		{82E96CCB-9520-40BD-9083-55B0446186C4}.Release|x86.Build.0 = Release|Win32
+		{E813A301-E895-43BC-904F-E4C3F1D628C4}.Debug|x64.ActiveCfg = Debug|x64
+		{E813A301-E895-43BC-904F-E4C3F1D628C4}.Debug|x64.Build.0 = Debug|x64
+		{E813A301-E895-43BC-904F-E4C3F1D628C4}.Debug|x86.ActiveCfg = Debug|Win32
+		{E813A301-E895-43BC-904F-E4C3F1D628C4}.Debug|x86.Build.0 = Debug|Win32
+		{E813A301-E895-43BC-904F-E4C3F1D628C4}.Release|x64.ActiveCfg = Release|x64
+		{E813A301-E895-43BC-904F-E4C3F1D628C4}.Release|x64.Build.0 = Release|x64
+		{E813A301-E895-43BC-904F-E4C3F1D628C4}.Release|x86.ActiveCfg = Release|Win32
+		{E813A301-E895-43BC-904F-E4C3F1D628C4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
