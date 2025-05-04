@@ -5,6 +5,10 @@ void FillRand(int arr[], const int n);
 void Print(int arr[], const int n);
 int* push_back(int arr[], int& n, const int value);
 int* push_front(int arr[], int& n, const int value);
+int* insert(int arr[], int& n, const int value, const int index);
+int* pop_back(int arr[], int& n);
+int* pop_front(int arr[], int& n);
+int* erase(int arr[], int& n, const int index);
 
 void main()
 {
@@ -15,12 +19,14 @@ void main()
 
 	FillRand(arr, n);
 	Print(arr, n);
-	for (int i = 0; i < n; i++)
+	int value;
+	int index;
+	/*for (int i = 0; i < n; i++)
 	{
 		cout << *(arr + i) << "\t";
 	}
 	cout << endl;
-	int value;
+	
 	cout << "Enter additional value: "; cin >> value;
 	
 	arr=push_back(arr, n, value);
@@ -33,7 +39,25 @@ void main()
 	cout << "Enter additional value: "; cin >> value;
 	arr = push_front(arr, n, value);
 	Print(arr, n);
+	
+	cout << "Enter additional value: "; cin >> value;
+	
+	cout << "Enter index: "; cin >> index;
+	arr = insert(arr, n, value, index);
+	Print(arr, n);
+	
+	arr=pop_back(arr, n);
+	Print(arr, n);
+	
+	arr = pop_front(arr, n);
+	Print(arr, n);
+	*/
+	cout << "Enter index: "; cin >> index;
+	arr = erase(arr, n, index);
+	
+	Print(arr, n);
 	delete[] arr; //Memory leak
+
 
 }
 
@@ -84,5 +108,64 @@ int* push_front(int arr[], int& n, const int value)
 	arr = buffer;
 	arr[0] = value;
 	n++;
+	return arr;
+}
+int* insert(int arr[], int& n, const int value, const int index)
+{
+	int* buffer = new int[n + 1];
+	for (int i = 0; i < index; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	
+	for (int i = index+1; i < n+1; i++)
+	{
+		buffer[i] = arr[i-1];
+	}
+	delete[] arr;
+	arr = buffer;
+	arr[index] = value;
+	n++;
+	return arr;
+}
+int* pop_back(int arr[], int& n)
+{
+	int* buffer = new int[n - 1];
+	for (int i = 0; i<n-1; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	delete[] arr;
+	arr = buffer;
+	n--;
+	return arr;
+}
+int* pop_front(int arr[], int& n)
+{
+	int* buffer = new int[n - 1];
+	for (int i = 0; i < n - 1;i++)
+	{
+		buffer[i] = arr[i + 1];
+	}
+	delete[] arr;
+	arr = buffer;
+	
+	n--;
+	return arr;
+}
+int* erase(int arr[], int& n, const int index)
+{
+	int* buffer = new int[n - 1];
+	for (int i = 0; i < index;i++)
+	{
+		buffer[i] = arr[i];
+	}
+	for (int i = index; i < n-1;i++)
+	{
+		buffer[i] = arr[i+1];
+	}
+	delete[] arr;
+	arr = buffer;
+	n--;
 	return arr;
 }
