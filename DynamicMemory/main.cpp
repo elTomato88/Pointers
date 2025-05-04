@@ -4,6 +4,7 @@ using namespace std;
 void FillRand(int arr[], const int n);
 void Print(int arr[], const int n);
 int* push_back(int arr[], int& n, const int value);
+int* push_front(int arr[], int& n, const int value);
 
 void main()
 {
@@ -26,8 +27,14 @@ void main()
 	//7 Значение добавлено, проверяем результат
 	Print(arr, n);
 
-	delete[] arr;
-	//Memory leak
+	
+	
+
+	cout << "Enter additional value: "; cin >> value;
+	arr = push_front(arr, n, value);
+	Print(arr, n);
+	delete[] arr; //Memory leak
+
 }
 
 void FillRand(int arr[], const int n)
@@ -62,6 +69,20 @@ int* push_back(int arr[], int& n, const int value)
 	//5 только после всего этого в конце массива появляется элемент, который можно сохранить добавляемое значение. 
 	arr[n] = value;
 	//6 после того как в массив добавился элемент, количество его элементов увеличивается на один
+	n++;
+	return arr;
+}
+int* push_front(int arr[], int& n, const int value)
+{
+	int* buffer = new int[n + 1];
+	for (int i = 0; i < n; i++)
+	{
+		buffer[i+1] = arr[i];
+
+	}
+	delete[] arr;
+	arr = buffer;
+	arr[0] = value;
 	n++;
 	return arr;
 }
