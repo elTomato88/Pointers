@@ -1,8 +1,19 @@
 ﻿#include<iostream>
 using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+
+#define tab "\t"
+#define delimeter "\n-----------------------------------\n"
+//#define DYNAMIC_MEMORY_1
 
 void FillRand(int arr[], const int n);
+void FillRand(int** arr, const int rows, const int cols);
+
 void Print(int arr[], const int n);
+void Print(int** arr, const int rows, const int cols);
+
 int* push_back(int arr[], int& n, const int value);
 int* push_front(int arr[], int& n, const int value);
 int* insert(int arr[], int& n, const int value, const int index);
@@ -10,9 +21,18 @@ int* pop_back(int arr[], int& n);
 int* pop_front(int arr[], int& n);
 int* erase(int arr[], int& n, const int index);
 
+
+int** push_row_back(int** arr, int& rows, const int cols);
+
+
+
 void main()
 {
 	setlocale(LC_ALL, "");
+#ifdef DYNAMIC_MEMORY_1
+
+ 
+
 	int n;
 	cout << "Enter the length: "; cin >> n;
 	int* arr = new int[n];
@@ -21,7 +41,7 @@ void main()
 	Print(arr, n);
 	int value;
 	int index;
-	/*for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		cout << *(arr + i) << "\t";
 	}
@@ -45,10 +65,10 @@ void main()
 	cout << "Enter index: "; cin >> index;
 	arr = insert(arr, n, value, index);
 	Print(arr, n);
-	*/
+	
 	arr=pop_back(arr, n);
 	Print(arr, n);
-	/*
+	
 	arr = pop_front(arr, n);
 	Print(arr, n);
 	
@@ -57,8 +77,28 @@ void main()
 	
 	Print(arr, n);
 	delete[] arr; //Memory leak
-	*/
-
+#endif
+	int rows;
+	int cols;
+	cout << "Enter rows: "; cin >> rows;
+	cout << "Enter cols: "; cin >> cols;
+	
+	int** arr = new int* [rows];
+	for (int i = 0;i < rows; i++)
+	{
+		arr[i] = new int[cols];
+	}
+	
+	FillRand(arr, rows, cols);
+	arr=push_row_back(arr, rows, cols);
+	Print(arr, rows, cols);
+	
+	for (int i = 0; i < rows; i++)
+	{
+		delete[]arr[i];
+	}
+	delete[] arr;
+	
 }
 
 void FillRand(int arr[], const int n)
@@ -69,14 +109,40 @@ void FillRand(int arr[], const int n)
 		//Index operator, Subscript operator;
 	}
 }
+void FillRand(int** arr, const int rows, const int cols)
+{
+	for (int i = 0;i < rows;i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			arr[i][j] = rand() % 100;
+		}
+	}
+}
+
 void Print(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << "\t";
 	}
+	cout << delimeter;
 	cout << endl;
 }
+void Print(int** arr, const int rows, const int cols)
+{
+	for (int i = 0; i < rows;i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << arr[i][j] << tab;
+		}
+		
+		cout << endl;
+	}
+	cout << delimeter;
+}
+
 int* push_back(int arr[], int& n, const int value)
 {
 	//1) Создаем буферный массив нужного размера. 
@@ -168,4 +234,26 @@ int* erase(int arr[], int& n, const int index)
 	arr = buffer;
 	n--;
 	return arr;
+}
+
+int** push_row_back(int** arr, int& rows, const int cols)
+{
+	//1/ создаем буферный массив указателей нужного размера. 
+	int** buffer = new int* [rows + 1];
+	//2/ Копируем адрес строк в буферный массив указателей. 
+	for (int i = 0;i < rows;i++)
+	{
+		buffer[i] = arr[i];
+	}
+	//3)Удаляем исходный массив
+	delete[] arr;
+	//4) Создаем добавляемую строку и записываем адрес в массив указателей. 
+	
+	buffer[rows] = new int[cols] {};
+	//5) При добавлении в массив строки, количество его строк увеличивается на 1
+	rows++;
+	//6) возвращаем новый массив на место вызоваж
+	return buffer;
+
+
 }
