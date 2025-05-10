@@ -45,19 +45,19 @@ void main()
 	cout << "Enter index: "; cin >> index;
 	arr = insert(arr, n, value, index);
 	Print(arr, n);
-	
+	*/
 	arr=pop_back(arr, n);
 	Print(arr, n);
-	
+	/*
 	arr = pop_front(arr, n);
 	Print(arr, n);
-	*/
+	
 	cout << "Enter index: "; cin >> index;
 	arr = erase(arr, n, index);
 	
 	Print(arr, n);
 	delete[] arr; //Memory leak
-
+	*/
 
 }
 
