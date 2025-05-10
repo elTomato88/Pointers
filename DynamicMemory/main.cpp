@@ -8,6 +8,7 @@ using std::endl;
 #define delimeter "\n-----------------------------------\n"
 //#define DYNAMIC_MEMORY_1
 
+
 void FillRand(int arr[], const int n);
 void FillRand(int** arr, const int rows, const int cols);
 
@@ -25,6 +26,7 @@ int* erase(int arr[], int& n, const int index);
 /*HomeWork*/
 
 void ArithmeticPrint(int** arr, const int rows, const int cols);
+
 int** Allocate(const int rows, const int cols);
 void Clear(int** arr, const int rows, const int cols);
 
@@ -32,7 +34,7 @@ int** push_row_back(int** arr, int& rows, const int cols);
 int** push_row_front(int** arr, int& rows, const int cols);
 int** insert_row(int** arr, int& rows, const int cols, int index);
 
-int** push_col_back(int** arr, const int rows, int& cols);
+void push_col_back(int** arr, const int rows, int& cols);
 int** push_col_front(int** arr, const int rows, int& cols);
 int** insert_col(int** arr, const int rows, int& cols, int index);
 
@@ -113,6 +115,8 @@ void main()
 	Print(arr, rows, cols);
 	cout << "ArithmeticPrint: " << endl;
 	ArithmeticPrint(arr, rows, cols);
+	
+	/*
 	int** array_check = Allocate(rows, cols);
 	FillRand(array_check, rows, cols);
 	cout << "Checking Allocate: " << endl;
@@ -152,6 +156,7 @@ void main()
 	cout << "Checking erase_col: " << endl;
 	ArithmeticPrint(array_check, rows, cols);
 	Clear(array_check, rows, cols);
+	*/
 	
 	
 
@@ -307,17 +312,14 @@ int* erase(int arr[], int& n, const int index)
 
 
 
+
 void ArithmeticPrint(int** arr, const int rows, const int cols)
 {
-	for (int i = 0; i < rows; i++)
+	for (int i = 0; i < rows*cols; i++)
 	{
-		for (int j = 0;j < cols; j++)
-		{
-			cout << *(*(arr + i) + j)<<tab;
-		}
-		cout << endl;
+		cout << *arr[i];
+		if (!i%cols) cout << endl;
 	}
-	cout << delimeter;
 }
 int** Allocate(const int rows, const int cols)
 {
