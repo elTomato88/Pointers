@@ -217,7 +217,7 @@ template<typename T>void Print(T** arr, const int rows, const int cols)
 	cout << delimeter;
 }
 
-template<typename T>T* push_back(T arr[], int& n, const int value)
+template<typename T>T* push_back(T arr[], int& n, T value)
 {
 	//1) Создаем буферный массив нужного размера. 
 	T* buffer = new T[n + 1];
@@ -236,7 +236,7 @@ template<typename T>T* push_back(T arr[], int& n, const int value)
 	n++;
 	return arr;
 }
-template<typename T>T* push_front(T arr[], int& n, const int value)
+template<typename T>T* push_front(T arr[], int& n, T value)
 {
 	T* buffer = new T[n + 1];
 	for (int i = 0; i < n; i++)
