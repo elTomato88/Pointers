@@ -15,9 +15,9 @@ void FillRand(int** arr, const int rows, const int cols);
 template<typename T>void Print(T arr[], const int n);
 template<typename T>void Print(T** arr, const int rows, const int cols);
 
-template<typename T>T* push_back(T arr[], int& n, const int value);
-template<typename T>T* push_front(T arr[], int& n, const int value);
-template<typename T>T* insert(T arr[], int& n, const T value, const int index);
+template<typename T>T* push_back(T arr[], int& n, T value=0);
+template<typename T>T* push_front(T arr[], int& n, T value);
+template<typename T>T* insert(T arr[], int& n, const T value, T index);
 template<typename T>T* pop_back(T arr[], int& n);
 template<typename T>T* pop_front(T arr[], int& n);
 template<typename T>T* erase(T arr[], int& n, const int index);
@@ -345,23 +345,7 @@ template<typename T>void Clear(T** arr, const int rows)
 
 template<typename T>T** push_row_back(T** arr, int& rows, const int cols)
 {
-	//1/ создаем буферный массив указателей нужного размера. 
-	T** buffer = new T* [rows + 1];
-	//2/ Копируем адрес строк в буферный массив указателей. 
-	for (int i = 0;i < rows;i++)
-	{
-		buffer[i] = arr[i];
-	}
-	//3)Удаляем исходный массив
-	delete[] arr;
-	//4) Создаем добавляемую строку и записываем адрес в массив указателей. 
-
-	buffer[rows] = new T[cols] {};
-	//5) При добавлении в массив строки, количество его строк увеличивается на 1
-	rows++;
-	//6) возвращаем новый массив на место вызоваж
-	return buffer;
-
+	return push_back(arr, rows, new T[cols]{});
 
 }
 template<typename T>T** push_row_front(T** arr, int& rows, const int cols)
