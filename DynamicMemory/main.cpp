@@ -15,8 +15,8 @@ void FillRand(int** arr, const int rows, const int cols);
 template<typename T>void Print(T arr[], const int n);
 template<typename T>void Print(T** arr, const int rows, const int cols);
 
-template<typename T>T* push_back(T arr[], int& n, const int value);
-template<typename T>T* push_front(T arr[], int& n, const int value);
+template<typename T>T* push_back(T arr[], int& n, T value);
+template<typename T>T* push_front(T arr[], int& n, T value);
 template<typename T>T* insert(T arr[], int& n, const T value, const int index);
 template<typename T>T* pop_back(T arr[], int& n);
 template<typename T>T* pop_front(T arr[], int& n);
